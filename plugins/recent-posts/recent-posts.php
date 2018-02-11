@@ -28,7 +28,7 @@ function recent_posts($atts) {
 			<ul class="posts">
 				<?php while ($posts->have_posts()) : $posts->the_post(); ?>
 					<li class="post">
-						<a class="title" href="<?php esc_url(the_permalink()); ?>">
+						<a href="<?php esc_url(the_permalink()); ?>">
 							<span class="featured-image"><?php the_post_thumbnail('full'); ?></span>
 							<span class="title"><?php echo get_the_title(); ?></span>
 						</a>
