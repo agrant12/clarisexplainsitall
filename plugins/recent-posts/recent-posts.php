@@ -11,11 +11,20 @@ Author URI: http://alvingrant.com
 
 
 function recent_posts($atts) {
+	
+	extract(shortcode_atts(array(
+		'posts_per_page' => 9,
+		'category_name' => '',
+		'post_type' => 'post',
+		'paginate' => true
+	), $atts));
+
 	$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
 	$args = array(
-		'post_type' => 'post',
-		'posts_per_page' => 9,
+		'post_type' => $post_type,
+		'posts_per_page' => $posts_per_page,
+		'category_name' => $category_name,
 		'paged' => $paged
 	);
 
@@ -29,8 +38,8 @@ function recent_posts($atts) {
 				<?php while ($posts->have_posts()) : $posts->the_post(); ?>
 					<li class="post">
 						<span class="category"><?php the_category(); ?></span>
-						<span class="date"><?php the_date(); ?></span>
-						<span class="title"><?php echo get_the_title(); ?></span>
+						<span class="date"><?php esc_html(the_date()); ?></span>
+						<span class="title"><?php echo esc_html(get_the_title()); ?></span>
 						<a href="<?php esc_url(the_permalink()); ?>">
 							<span class="featured-image"><?php the_post_thumbnail('full'); ?></span>
 						</a>
@@ -38,12 +47,14 @@ function recent_posts($atts) {
 					</li>
 				<?php endwhile; ?>
 				<?php
-					echo paginate_links( array(
-					'base' => home_url('/page/%#%/'),
-					'format' => '?paged=%#%',
-					'current' => max( 1, get_query_var('paged') ),
-					'total' => $posts->max_num_pages
-				) );
+					if ($paginate === true) {
+						echo paginate_links( array(
+							'base' => home_url('/page/%#%/'),
+							'format' => '?paged=%#%',
+							'current' => max( 1, get_query_var('paged') ),
+							'total' => $posts->max_num_pages
+						) );
+					}
 				?>
 			</ul>
 		</section>
