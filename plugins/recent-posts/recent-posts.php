@@ -11,11 +11,19 @@ Author URI: http://alvingrant.com
 
 
 function recent_posts($atts) {
+	
+	extract(shortcode_atts(array(
+		'posts_per_page' => 9,
+		'category_name' => '',
+		'post_type' => 'post'
+	), $atts));
+
 	$paged = ( get_query_var( 'paged' ) ) ? absint( get_query_var( 'paged' ) ) : 1;
 
 	$args = array(
-		'post_type' => 'post',
-		'posts_per_page' => 9,
+		'post_type' => $post_type,
+		'posts_per_page' => $posts_per_page,
+		'category_name' => $category_name,
 		'paged' => $paged
 	);
 
