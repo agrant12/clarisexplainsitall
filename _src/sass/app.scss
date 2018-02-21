@@ -1,0 +1,27 @@
+/* Body */
+.entry-wrap {
+	box-shadow: none;
+}
+
+/* Branding */
+.x-logobar {
+	border-bottom: none;
+	padding-top: 50px;
+}
+
+/* Menu */
+.x-navbar {
+	border-bottom: none;
+	box-shadow: none;
+	.desktop {
+		.x-nav > li > a {
+			font-size: 12px;
+			padding-top: 25px; 
+		}
+		.x-nav > li > a:hover,
+		.x-nav > .x-active > a,
+		.x-nav > .current-menu-item > a {
+			box-shadow: none;
+		}
+	}
+}

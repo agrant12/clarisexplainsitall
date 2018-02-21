@@ -11,3 +11,8 @@ function register_shortcodes() {
 	add_shortcode('recent-posts', 'recent_posts');
 	add_shortcode('slider', 'slider');
 }
+
+add_action('wp_head', 'register_css');
+function register_css() {
+	wp_enqueue_style('app', '/wp-content/themes/x-child/public/css/app.css', array());
+}
