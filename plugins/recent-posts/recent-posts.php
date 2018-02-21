@@ -60,3 +60,8 @@ function recent_posts($atts) {
 		</section>
 	<?php
 }
+
+add_action('init', 'posts');
+function posts() {
+	wp_enqueue_style('posts', '/wp-content/themes/x-child/plugins/recent-posts/css/style.css', array());
+}
