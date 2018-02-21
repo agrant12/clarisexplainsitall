@@ -6,16 +6,70 @@ ul.posts {
 	margin: 0;
 }
 
+/* Default */
 ul.posts li.post {
 	list-style: none;
-	margin: 15px 10px;
-	width: calc(100%/4 - 20px);
+	margin: 15px 10px 30px;
+	width: calc(100%/2 - 20px);
 	position: relative;
 	overflow: hidden;
+	text-align: center;
 }
 
-ul.posts li.post span.title {
-	position: absolute;
-	bottom: 30px;
-	left: 10%;
+ul.posts li.post .meta {
+	font-size: 12px;
+	font-weight: 400;
+	margin-bottom: 0;
+	margin-top: 15px;
+}
+
+ul.posts li.post .post-categories {
+	display: flex;
+	list-style: none;
+	margin: 10px 0;
+	text-transform: uppercase;
+}
+
+ul.posts li.post .post-categories li {
+	font-size: 10px;
+	margin: 0 5px;
+	width: 100%;
+}
+
+ul.posts li.post .post-categories li:first-child {
+	margin-left: 0;
+}
+
+ul.posts li.post p.title {
+	font-family: serif;
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+ul.posts li.post p {
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+ul.posts li.post .more-link {
+	font-size: 13px;
+}
+
+ul.posts li.post div.featured-image {
+	height: auto;
+	width: 100%;
+}
+ul.posts li.post .featured-image img {
+	height: auto;
+	width: 100%;
+}
+
+/* 2x2 */
+.two-two {
+	width: calc(100%/2 - 20px);
+}
+/* 3x3 */
+.three-three {
+	width: calc(100%/3 - 20px);
 }
