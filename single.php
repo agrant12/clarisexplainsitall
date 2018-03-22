@@ -17,14 +17,28 @@ $fullwidth = get_post_meta( get_the_ID(), '_x_post_layout', true );
 				<div class="x-main left <?php echo ($fullwidth === 'on' ? 'full': ' '); ?>">
 					<?php while ( have_posts() ) : the_post(); ?>
 						<div class="entry-wrap">
-							<div class="categories">
-								<?php $categories = get_categories('category');
-								foreach ($categories as $category): ?>
-									<a href="<?php echo home_url("/category/" . $category->slug); ?>"><?php echo $category->name; ?></a>
-								<?php endforeach; ?>
+							<div class="metadata">
+								<div class="dates"><?php the_date(); ?></div>
+								<div class="author">| by <?php the_author(); ?></div>
+								<div class="comments">| <?php echo comments_number(); ?></div>
+								<div class="categories">|
+									<?php $categories = get_the_category();
+										$count = count($categories);
+										foreach ($categories as $key => $category): ?>
+											<?php if ($key === ($count - 1)): ?>
+												<a href="<?php echo home_url("/category/" . $category->slug); ?>">
+													<?php echo $category->name; ?>
+												</a>
+											<?php else: ?>
+												<a href="<?php echo home_url("/category/" . $category->slug); ?>">
+													<?php echo $category->name . ","; ?>
+												</a>
+											<?php endif; ?>
+										<?php endforeach; 
+									?>
+								</div>
 							</div>
 							<h1 class="entry-title"><?php the_title(); ?></h1>
-							<!--<p class="author">by <?php the_author(); ?></p>-->
 						</div>
 						<div class="entry-featured"><div class="entry-thumb"><?php the_post_thumbnail('full'); ?></div></div>
 
